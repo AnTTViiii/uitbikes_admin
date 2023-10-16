@@ -1,0 +1,72 @@
+.login-bg {
+    background: url('https://res.cloudinary.com/dpwehcnso/image/upload/v1697439050/uitbikes/UITBikes_banner2_gcmaa6.png');
+    background-repeat: no-repeat;
+    background-size: auto 100vh;
+    background-attachment: fixed;
+    
+    @media screen and (max-width: 600px) {
+        padding: 5vh 0;
+    }
+}
+
+.sign-in {
+    width: fit-content;
+    min-width: calc(45vw - 60px);
+    min-height: 100vh;
+    text-align: center;
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    background-color: white;
+    padding: 30px;
+    box-shadow: rgba(149,157,165,0.2) 0px 8px 24px;
+    overflow-y: scroll;
+
+    >h3 {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+
+        .signin-icon {
+            background-color: #6734ff;
+            border-radius: 50%;
+            padding: 10px;
+            color: white;
+        }
+    }
+
+    .login-submit {
+        background-color: #6734ff;
+
+        &:hover {
+            background-color: #531aff;
+        }
+    }
+
+    @media screen and (max-width: 600px) {
+        margin: auto;
+        min-height: 90vh;
+        border-radius: 20px;
+        background-color: rgba(26, 26, 26, 0.67);
+        width: calc(100vw - 60px);
+
+        >h3 {
+            color: white;
+        }
+
+        #outlined-basic, #outlined-basic:hover, #outlined-basic:focus {
+            border: 1px solid white;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.189);
+        }
+
+        #outlined-basic-label {
+            color: white;
+        }
+    }
+}

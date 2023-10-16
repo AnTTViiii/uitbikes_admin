@@ -1,0 +1,151 @@
+.sidebar {
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-start;
+    flex-direction: column;
+    color: #444444;
+    width: 240px;
+    background-color: #fff;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+
+    @media screen and (max-width: 1080px) {
+        width: 100vw;
+        background-color: #15014b;
+        color: white;
+        z-index: 1;
+    }
+
+    .sidebar__logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 5rem;
+
+        @media screen and (max-width: 1080px) {
+            justify-content: space-between;
+            height: calc(171px / 1.8);
+            padding: 0 20px;
+            margin-bottom: 20px;
+        }
+
+        >img {
+            --size: 90px;
+            width: var(--size);
+            height: auto;
+        }
+
+        .sidebar-close {
+            cursor: pointer;
+            display: none;
+
+            .icon {
+                font-size: 2rem;
+            }
+
+            @media screen and (max-width: 1080px) {
+                display: block;
+            }
+        }
+    }
+
+    .sidebar__menu {
+        display: flex;
+        align-items: stretch;
+        justify-content: flex-start;
+        flex-direction: column;
+        flex-grow: 1;
+
+        .sidebar__menu__item {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            position: relative;
+            margin-bottom: 1rem;
+            padding-left: 15%;
+            transition: color 0.3s ease-in-out;
+            cursor: pointer;
+
+            @media screen and (max-width: 1080px) {
+                padding-left: 20px;
+            }
+
+            &:hover {
+                color: #6734ff;
+
+                @media screen and (max-width: 1080px) {
+                    color: #FF9066;
+                }
+            }
+
+            &.active {
+                font-weight: 700;
+                color: #6734ff;
+
+                @media screen and (max-width: 1080px) {
+                    color: #FF9066;
+                }
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    height: 100%;
+                    width: 5px;
+                    left: 0;
+                    top: 0;
+                    background-color: #6734ff;
+                    border-top-right-radius: 20px;
+                    border-bottom-right-radius: 20px;
+
+                    @media screen and (max-width: 1080px) {
+                        background-color: #FF9066;
+                    }
+                }
+            }
+
+            .sidebar__menu__item__icon {
+                --size: 40px;
+                width: var(--size);
+                height: var(--size);
+                margin-right: 2.2rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                @media screen and (max-width: 1080px) {
+                    margin-right: 1rem;
+                }
+
+                i {
+                    font-size: 1.9rem;
+                }
+            }
+
+            &:last-child {
+                margin-top: auto;
+            }
+        }
+    }
+
+    
+}
+
+.css-1t1j96h-MuiPaper-root-MuiDialog-paper  {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif !important;
+    border-radius: 10px !important;
+}
+
+.css-bdhsul-MuiTypography-root-MuiDialogTitle-root {
+
+}
+
+.css-1e6y48t-MuiButtonBase-root-MuiButton-root {
+    color: white !important;
+    text-transform: none !important;
+    background-color: #6734ff !important;
+    margin: auto 10px 10px !important;
+}

@@ -1,0 +1,56 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+
+    >tr:nth-child(odd):not(:first-child) {
+        background-color: #e8e8e8;
+    }
+
+    >tr:not(:first-child) {
+        border-bottom: 1px solid silver;
+    }
+
+    >tr:nth-child(1) {
+        background-color: #6734ff;
+        color: white;
+
+        >th {
+            padding: 10px 5px;
+
+            &:first-child {
+                border-top-left-radius: 10px;
+            }
+
+            &:last-child {
+                border-top-right-radius: 10px;
+            }
+        }
+    }
+
+    >tr>td {
+        padding: 5px;
+        text-align: center;
+        align-items: center;
+        overflow: hidden;
+
+        >img {
+            height: 2rem;
+            width: 3rem;
+            object-fit: contain;
+        }
+
+        &:nth-child(3) {
+            text-wrap: nowrap;
+            overflow: scroll;
+            text-align: left;
+        }
+    }
+}
+
+.brand-list {
+    .brand-list-table {
+        >tr>td:nth-child(3) {
+            text-align: center;
+        }
+    }
+}

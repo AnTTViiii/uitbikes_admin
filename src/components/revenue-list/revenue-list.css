@@ -1,0 +1,19 @@
+.revenue-list {
+    & > * ~ * {
+        margin-top: calc(30px / 2.5);
+    }
+
+    .revenue-list__item {
+        .revenue-list__item__title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 1rem;
+            margin-bottom: calc(30px / 7);
+
+            span {
+                font-weight: 700;
+            }
+        }
+    }
+}

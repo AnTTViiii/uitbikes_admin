@@ -1,0 +1,19 @@
+.box {
+    padding: 20px;
+    border-radius: 20px;
+    background-color: #fff;
+    box-shadow: rgba(149,157,165,0.2) 0px 8px 24px;
+
+    &.box-purple {
+        background-color: #6734ff;
+        color: white;
+    }
+
+    &.box-fullheight {
+        height: calc(100% - 30px);
+
+        @media screen and (max-width: 1080px) {
+            height: calc(100% - 20px);
+        }
+    }
+}

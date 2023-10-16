@@ -1,0 +1,35 @@
+.overall-list {
+    & > * ~ * {
+        margin-top: calc(30px / 2.5);
+    }
+
+    .overall-list__item {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        
+        .overall-list__item__icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            --size: 50px;
+            width: var(--size);
+            height: var(--size);
+            border-radius: 50%;
+            background-color: #edefff;
+            margin-right: 30px;
+
+            i {
+                font-size: 1.9em;
+                color: black;
+            }
+        }
+
+        .overall-list__item__info {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            flex-direction: column;
+        }
+    }
+}

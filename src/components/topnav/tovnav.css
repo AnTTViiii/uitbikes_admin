@@ -1,0 +1,30 @@
+.topnav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+
+    @media screen and (max-width: 1080px) {
+        margin-bottom: 20px;
+    }
+}
+
+.sidebar-toggle {
+    --size: 40px;
+    width: var(--size);
+    height: var(--size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    display: none;
+
+    @media screen and (max-width: 1080px) {
+        display: flex;
+    }
+
+    .icon {
+        font-size: 3rem;
+        color: #6734ff;
+    }
+}
