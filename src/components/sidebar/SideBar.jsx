@@ -5,11 +5,12 @@ import sidebar from '../configs/sidebar'
 import { ClearRounded, LogoutRounded } from '@mui/icons-material'
 import { authActions } from '../stores/auth'
 import { useDispatch, useSelector } from 'react-redux'
-import { Dialog, DialogTitle, Slide, Button, DialogActions } from '@mui/material'
+import { Dialog, DialogTitle, Button, DialogActions } from '@mui/material'
+import { Transition } from '../configs/functions'
 
-const Transition = React.forwardRef(function Transition(props, ref) {
-    return <Slide direction="up" ref={ref} {...props} />;
-});
+// const Transition = React.forwardRef(function Transition(props, ref) {
+//     return <Slide direction="up" ref={ref} {...props} />;
+// });
 const SideBar = () => {
     const [activeIndex, setActiveIndex] = useState(0);
     const location = useLocation();

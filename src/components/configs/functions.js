@@ -1,3 +1,6 @@
+import { Slide } from "@mui/material";
+import { forwardRef } from "react";
+
 export const dot3digits = (x) => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 };
@@ -53,3 +56,7 @@ export const getChargeRequestStatusName = (status) => {
     }
     return name;
 }
+
+export const Transition = forwardRef(function Transition(props, ref) {
+    return <Slide direction="up" ref={ref} {...props} />;
+});

@@ -3,6 +3,7 @@ import { Button } from '@mui/material'
 import React, { useState } from 'react'
 import ProductData from '../configs/Product'
 import { getTypeName, getBrandName, dot3digits } from '../configs/functions'
+import './product-list.css'
 
 const ProductList = () => {
     const [display, setDisplay] = useState(false);
@@ -15,6 +16,7 @@ const ProductList = () => {
                 <BorderColorRounded />
                 Thêm xe mới
             </Button>
+            <div>
             <table className='product-list-table'>
                 <tr>
                     <th>STT</th>
@@ -35,7 +37,7 @@ const ProductList = () => {
                         <tr>
                             <td>{index+1}</td>
                             <td className='img'><img src={product.image} alt={product.name} /></td>
-                            <td>{product.name}</td>
+                            <td><p className='col-name'>{product.name}</p></td>
                             <td>{product.color}</td>
                             <td>{product.cc} cc</td>
                             <td>{product.date}</td>
@@ -44,12 +46,13 @@ const ProductList = () => {
                             <td>{dot3digits(product.price)}</td>
                             <td>{product.quantity}</td>
                             <td>{product.is_active ? <VisibilityRounded /> : <VisibilityOffRounded />}</td>
-                            <td>Sửa</td>
-                            <td>Xóa</td>
+                            <td><p className='edit-btn'>Sửa</p></td>
+                            <td><p className='del-btn'>Xóa</p></td>
                         </tr>
                     ))
                 }
             </table>
+            </div>
         </div>
     )
 }
