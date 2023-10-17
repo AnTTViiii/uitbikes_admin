@@ -1,12 +1,12 @@
 import React from 'react'
 import './overall-list.css'
-import { data } from '../../constants'
+import data from '../configs/data'
 import { Inventory2Rounded, LocalShippingRounded, Person2Rounded } from '@mui/icons-material'
 
 const icons = [
-    <Person2Rounded />,
-    <Inventory2Rounded />,
-    <LocalShippingRounded />,
+  <Person2Rounded />,
+  <Inventory2Rounded />,
+  <LocalShippingRounded />,
 ]
 const OverallList = () => {
   return (

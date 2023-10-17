@@ -1,6 +1,14 @@
 import { Slide } from "@mui/material";
 import { forwardRef } from "react";
 
+export const colors = {
+    green: '#4CAF50',
+    red: '#DB190C',
+    purple: '#8624DB',
+    white: '#fff',
+    orange: '#FF9066'
+}
+
 export const dot3digits = (x) => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 };

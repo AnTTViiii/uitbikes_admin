@@ -1,6 +1,6 @@
 import React from 'react'
 import DashboardWrapper, { DashboardWrapperMain, DashboardWrapperRight } from '../components/dashboard-wrapper/DashboardWrapper'
-import { data } from '../constants'
+import data from '../components/configs/data'
 import SummaryBox, { SummaryBoxSpecial } from '../components/summary-box/SummaryBox'
 import Box from '../components/box/Box'
 import { Bar } from 'react-chartjs-2'

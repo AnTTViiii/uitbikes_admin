@@ -1,7 +1,7 @@
 import React from 'react'
 import './tovnav.css'
 import UserInfo from '../user-info/UserInfo'
-import { data } from '../../constants'
+import data from '../configs/data'
 import { MenuRounded } from '@mui/icons-material'
 
 const TopNav = () => {

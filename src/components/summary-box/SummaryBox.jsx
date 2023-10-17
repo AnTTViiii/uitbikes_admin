@@ -2,7 +2,7 @@ import React from 'react'
 import './summarybox.css'
 import Box from '../box/Box'
 import { CircularProgressbarWithChildren, buildStyles } from 'react-circular-progressbar'
-import { colors } from '../../constants'
+import { colors } from '../configs/functions'
 import { Line } from 'react-chartjs-2'
 import {
     Chart as ChartJS, CategoryScale, LinearScale, 

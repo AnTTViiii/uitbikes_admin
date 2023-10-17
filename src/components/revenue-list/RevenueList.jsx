@@ -1,6 +1,6 @@
 import React from 'react'
 import './revenue-list.css'
-import { data } from '../../constants'
+import data from '../configs/data'
 import ProgressBar from '../progressbar/ProgressBar'
 
 const RevenueList = () => {
