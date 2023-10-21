@@ -13,11 +13,11 @@ import {
 } from "@mui/material";
 import { ArrowDropDown } from "@mui/icons-material";
 
-function TypeList() {
+function TypeList({ handleChangeType }) {
   const [open, setOpen] = useState(false);
   const anchorRef = useRef(null);
   const options = typeData;
-  const [selectedIndex, setSelectedIndex] = useState("Tất cả");
+  const [selectedIndex, setSelectedIndex] = useState(options[0].name);
   const handleMenuItemClick = (event, index) => {
     setSelectedIndex(index);
     setOpen(false);
@@ -33,13 +33,9 @@ function TypeList() {
     setOpen(false);
   };
   return (
-    <Box>
+    <div>
       <ButtonGroup variant="outlined" ref={anchorRef}>
-        <Button
-          fullWidth
-          className="create-product-btn"
-          sx={{ textTransform: "none" }}
-        >
+        <Button fullWidth sx={{ textTransform: "none" }}>
           {selectedIndex}
         </Button>
         <Button
@@ -76,12 +72,14 @@ function TypeList() {
                 <MenuList id="split-button-menu" autoFocusItem>
                   {options.map((child, index) => (
                     <MenuItem
-                      sx={{ padding: 2 }}
+                      sx={{ padding: "10px 15px" }}
                       key={child.id}
                       selected={child.name === selectedIndex}
-                      onClick={(event) =>
-                        handleMenuItemClick(event, child.name)
-                      }
+                      onClick={() => {
+                        handleChangeType(child.id);
+                        setSelectedIndex(child.name);
+                        setOpen(false);
+                      }}
                     >
                       {child.name}
                     </MenuItem>
@@ -92,7 +90,7 @@ function TypeList() {
           </Grow>
         )}
       </Popper>
-    </Box>
+    </div>
   );
 }
 
