@@ -17,7 +17,7 @@ const ProductList = () => {
   const [type, setType] = useState(0);
   const handleChangeType = (val) => {
     axios
-      .get("http://localhost:9090/api/products/details/type/" + val)
+      .get("http://localhost:9090/api/products/type/" + val)
       .then((response) => {
         setData(response.data);
       });
@@ -27,7 +27,7 @@ const ProductList = () => {
   useEffect(() => {
     if (data.length === 0) {
       axios
-        .get("http://localhost:9090/api/products/details/type/" + type)
+        .get("http://localhost:9090/api/products/type/" + type)
         .then((response) => {
           setData(response.data);
         });
@@ -75,7 +75,9 @@ const ProductList = () => {
                   <img src={product.image} alt={product.name} />
                 </td>
                 <td>
-                  <p className="col-name">{product.name}</p>
+                  <p className="col-name" title={product.name}>
+                    {product.name}
+                  </p>
                 </td>
                 <td>{product.color}</td>
                 <td>{product.cc} cc</td>
