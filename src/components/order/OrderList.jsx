@@ -2,6 +2,8 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Transition, dot3digits, getGender, invoiceStatus } from '../configs/functions';
 import { Button, Dialog, DialogContent, MenuItem, Select } from '@mui/material';
+import './order-list.css'
+//import Invoice from '../configs/Invoice'
 
 const OrderList = () => {
     const [invoice, setInvoice] = useState([]);
@@ -11,6 +13,8 @@ const OrderList = () => {
                 setInvoice(response.data);
             });
     }, []);
+
+    //setInvoice(Invoice); //if data not exists
     const updateStatus = (e) => {
         e.preventDefault();
         console.log(e.target.value);

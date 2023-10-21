@@ -3,8 +3,8 @@
         >tr {
             >td {
                 .select-box {
-                    width: 40px;
-                    overflow: hidden;
+                    width: 20vh;
+                    max-width: 120px;
                 }
             }
         }
