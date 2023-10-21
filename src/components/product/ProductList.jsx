@@ -17,7 +17,7 @@ const ProductList = () => {
                 Thêm xe mới
             </Button>
             <div>
-            <table className='product-list-table'>
+            <table className='table-1 product-list-table'>
                 <tr>
                     <th>STT</th>
                     <th>Hình</th>

@@ -1,0 +1,12 @@
+.order-list {
+    .order-list-table {
+        >tr {
+            >td {
+                .select-box {
+                    width: 40px;
+                    overflow: hidden;
+                }
+            }
+        }
+    }
+}
