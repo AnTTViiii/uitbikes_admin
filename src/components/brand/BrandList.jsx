@@ -22,7 +22,7 @@ const BrandList = () => {
                 Thêm hãng mới
             </Button>
 
-            <table className='brand-list-table'>
+            <table className='table-1 brand-list-table'>
                 <tr>
                     <th>ID</th>
                     <th>Hình</th>

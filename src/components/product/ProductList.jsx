@@ -17,22 +17,12 @@ const ProductList = () => {
   // }
   return (
     <div className="product-list">
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "flex-start",
-          justifyContent: "space-between",
-        }}
-      >
-        <Button className="create-product-btn">
-          <BorderColorRounded />
-          Thêm xe mới
-        </Button>
-        <TypeList />
-      </div>
+      <Button className="create-product-btn">
+        <BorderColorRounded />
+        Thêm xe mới
+      </Button>
       <div>
-        <table className="product-list-table">
+        <table className="table-1 product-list-table">
           <tr>
             <th>STT</th>
             <th>Hình</th>

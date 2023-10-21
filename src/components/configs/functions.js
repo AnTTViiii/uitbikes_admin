@@ -9,6 +9,19 @@ export const colors = {
     orange: '#FF9066'
 }
 
+export const invoiceStatus = [
+    'Chờ xác nhận',
+    "Đang giao",
+    "Đã giao",
+    "Đã hủy"
+]
+
+export const requestStatus = [
+    'Chờ xác nhận',
+    "Đang duyệt",
+    "Từ chối"
+]
+
 export const dot3digits = (x) => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 };
@@ -87,3 +100,6 @@ export const typeData = [
         name: "Xe phân khối lớn",
     },
 ];
+export const getGender = (gender) => {
+    return gender === 1 ? 'Nữ' : (gender === 0 ? 'Nam' : '/')
+}
