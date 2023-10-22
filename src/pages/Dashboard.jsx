@@ -64,7 +64,7 @@ export default Dashboard
 const RevenueByMonthsChart= () => {
   const [revenueByMonths, setRevenueByMonths] = useState([]);
   useEffect(() => {
-    axios.get(`http://localhost:9090/invoices/revenue/revenuebymonth`)
+    axios.get(`http://localhost:9090/api/invoices/revenuebymonth`)
       .then(response => {
         setRevenueByMonths(response.data);
       });
@@ -109,14 +109,14 @@ const RevenueByMonthsChart= () => {
     labels: revenueByMonths.labels,
     datasets: [
       {
-        label: 'Revenue',
+        label: 'Doanh thu',
         data: revenueByMonths.data
       }
     ]
   }
   return (
     <>
-      <div className="title">Revenue by months</div>
+      <div className="title">Doanh thu trong 12 tháng gần nhất</div>
       <div>
         <Bar options={chartOptions} data={chartData} height={`300px`} />
       </div>
