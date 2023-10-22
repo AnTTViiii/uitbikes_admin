@@ -17,7 +17,7 @@ const BrandList = () => {
 
     return (
         <div className='brand-list'>
-            <Button className="create-brand-btn" onClick={openCreatePopup}>
+            <Button className="create-btn" onClick={openCreatePopup}>
                 <BorderColorRounded />
                 Thêm hãng mới
             </Button>

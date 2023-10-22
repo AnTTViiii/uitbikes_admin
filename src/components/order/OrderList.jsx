@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { Transition, dot3digits, getGender, invoiceStatus } from '../configs/functions';
+import { Transition, dot3digits, getGender, invoiceStatus, getInvoiceStatusNotify } from '../configs/functions';
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, MenuItem, Select } from '@mui/material';
 import './order-list.css'
 //import Invoice from '../configs/Invoice'
@@ -15,9 +15,15 @@ const OrderList = () => {
     }, []);
 
     //setInvoice(Invoice); //if data not exists
-    const updateStatus = (e) => {
+    async function updateStatus(e, id) {
         e.preventDefault();
         console.log(e.target.value);
+        try {
+            await axios.put(`http://localhost:9090/api/invoices/${id}/status/${e.target.value}`);
+            alert('Đơn hàng #' + id + ' ' + getInvoiceStatusNotify(e.target.value) + '.')
+        } catch (error) {
+            alert(error);
+        }
     }
 
     const [customerInfoPopup, setCustomerInfoPopup] = useState(false);
@@ -51,9 +57,9 @@ const OrderList = () => {
                         <td><p onClick={() => {openInvoiceDetailPopup(); setInvoiceDetail(item.details)}}>Xem</p></td>
                         <td>{dot3digits(item.total)} đ</td>
                         <td>
-                            <Select className='select-box' defaultValue={item.status} size='small' onChange={updateStatus}>
+                            <Select className='select-box' defaultValue={item.status} size='small' onChange={(e) => updateStatus(e, item.id)}>
                                 {invoiceStatus.map((status, index) =>  (
-                                    <MenuItem value={index}>{status}</MenuItem>
+                                    <MenuItem disabled={index < item.status || (item.status === 2 && index === 3)} value={index}>{status}</MenuItem>
                                 ))}
                             </Select>
                         </td>
@@ -69,7 +75,7 @@ const OrderList = () => {
                     <h2>Thông tin khách hàng</h2>
                 </DialogTitle>
                 <DialogContent>
-                    <CustomerInfo info={customerInfo} closePopup={closeCutomerInfoPopup}/>
+                    <CustomerInfo info={customerInfo} />
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={closeCutomerInfoPopup}>Đóng</Button>
@@ -84,7 +90,7 @@ const OrderList = () => {
                     <h2>Chi tiết đơn đặt hàng</h2>
                 </DialogTitle>
                 <DialogContent>
-                    <OrderDetails details={invoiceDetail} closePopup={closeInvoiceDetailPopup}/>
+                    <OrderDetails details={invoiceDetail} />
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={closeInvoiceDetailPopup}>Đóng</Button>
