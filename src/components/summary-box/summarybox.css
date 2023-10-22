@@ -1,3 +1,9 @@
+.box {
+    padding: 20px;
+    border-radius: 20px;
+    background-color: #fff;
+    box-shadow: rgba(149,157,165,0.2) 0px 8px 24px;
+}
 .summary-box {
     display: flex;
     align-items: stretch;
@@ -24,9 +30,10 @@
             font-weight: 700;
             line-height: 1.2;
 
-            span {
+            >span {
                 font-size: 13px;
-                font-weight: 400;
+                font-weight: 700;
+                color: #DB190C;
             }
         }
 
@@ -35,23 +42,5 @@
             font-size: 1.1rem;
             color: black;
         }
-    }
-}
-
-.summary-box-special {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: column;
-    height: 100%;
-
-    .summary-box-special__title {
-        font-weight: 700;
-        font-size: 1.1rem;
-    }
-
-    .summary-box-special__value {
-        font-size: 1.1rem;
-        font-weight: 700;
     }
 }

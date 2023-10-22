@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import DashboardWrapper, { DashboardWrapperMain, DashboardWrapperRight } from '../components/dashboard-wrapper/DashboardWrapper'
-import data from '../components/configs/data'
-import SummaryBox, { SummaryBoxSpecial } from '../components/summary-box/SummaryBox'
-import Box from '../components/box/Box'
+import SummaryBox from '../components/summary-box/SummaryBox'
 import { Bar } from 'react-chartjs-2'
 import {
   Chart as ChartJS, CategoryScale, LinearScale, 
@@ -13,23 +11,62 @@ import RevenueList from '../components/revenue-list/RevenueList'
 import axios from 'axios'
 
 ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
+  CategoryScale, LinearScale, PointElement,
+  BarElement, Title, Tooltip, Legend
 );
 
 const Dashboard = () => {
+  const [summary, setSummary] = useState([
+    {
+        title: 'Sản phẩm bán chạy nhất',
+        subtitle: '',
+        value: 0,
+        percent: 0,
+        unit: 'sản phẩm'
+    },
+    {
+        title: 'Loại xe bán chạy nhất',
+        subtitle: '',
+        value: 0,
+        percent: 0,
+        unit: 'đ'
+    },
+    {
+        title: 'Hãng xe bán chạy nhất',
+        subtitle: '',
+        value: 0,
+        percent: 0,
+        unit: 'đ'
+    }
+  ]);
+
+  useEffect(() => {
+    const endpoints = [
+      `http://localhost:9090/api/invoices/bestsell/product`,
+      `http://localhost:9090/api/invoices/bestsell/type`,
+      `http://localhost:9090/api/invoices/bestsell/brand`,
+      `http://localhost:9090/api/invoices/revenue`
+    ];
+  
+    Promise.all(endpoints.map(endpoint => axios.get(endpoint)))
+      .then(responses => {
+        setSummary([
+          { ...summary[0], subtitle: responses[0].data.product.name, value: responses[0].data.quantity, percent: (responses[0].data.product.price*responses[0].data.quantity)/responses[3].data*100 },
+          { ...summary[1], subtitle: responses[1].data[1], value: responses[1].data[2], percent: responses[1].data[2]/responses[3].data*100 },
+          { ...summary[2], subtitle: responses[2].data[1], value: responses[2].data[3], percent: responses[2].data[3]/responses[3].data*100 }
+        ]);
+      });
+  }, []);
+
+console.log(summary);
+
   return (
     <DashboardWrapper>
       <DashboardWrapperMain>
         <div className="row">
-          <div className="col-8 col-md-12">
+          <div className="col-12 col-md-12">
             <div className="row">
-              {data.summary.map((item, index) => (
+              {summary.map((item, index) => (
                 <div
                   key={`summary-${index}`}
                   className="col-6 col-md-6 col-sm-12 mb"
@@ -39,15 +76,12 @@ const Dashboard = () => {
               ))}
             </div>
           </div>
-          <div className="col-4 hide-md">
-            <SummaryBoxSpecial item={data.revenueSummary} />
-          </div>
         </div>
         <div className="row">
           <div className="col-12">
-            <Box>
+            <div className='box'>
               <RevenueByMonthsChart />
-            </Box>
+            </div>
           </div>
         </div>
       </DashboardWrapperMain>
@@ -56,7 +90,7 @@ const Dashboard = () => {
         <div className="mb">
           <OverallList />
         </div>
-        <div className="title mbc">Revenue by channel</div>
+        <div className="title mbc">Tỉ lệ</div>
         <div className="mb">
           <RevenueList />
         </div>
@@ -122,7 +156,7 @@ const RevenueByMonthsChart= () => {
   }
   return (
     <>
-      <div className="title">Doanh thu trong 12 tháng gần nhất</div>
+      <div className="title mbc">Doanh thu trong 12 tháng gần nhất</div>
       <div>
         <Bar options={chartOptions} data={chartData} height={`300px`} />
       </div>

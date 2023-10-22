@@ -48,12 +48,7 @@ const ProductList = () => {
   // }
   return (
     <div className="product-list">
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-        }}
-      >
+      <div>
         <Link to={"/new-product"}>
           <Button className="create-btn">
             <BorderColorRounded />
@@ -76,7 +71,7 @@ const ProductList = () => {
             <th>Giá (đ)</th>
             <th>Slg</th>
             <th>Hiển thị</th>
-            <th colspan="2">Thao tác</th>
+            <th>Thao tác</th>
           </tr>
           {data &&
             data.map((product, index) => (

@@ -2,7 +2,7 @@ import { Button, TextField } from '@mui/material'
 import React, { useRef, useState } from 'react'
 import './sign-in.css'
 import { HttpsRounded } from '@mui/icons-material'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { authActions } from "../stores/auth";
 
 const SignIn = () => {

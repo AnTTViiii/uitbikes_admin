@@ -18,6 +18,11 @@
             border-radius: 50%;
             background-color: #edefff;
             margin-right: 10px;
+
+            @media screen and (max-width: 1080px) {
+                gap: 20px;
+                --size: 50px;    
+            }
         }
 
         .overall-list__item__info {
@@ -26,5 +31,13 @@
             align-items: stretch;
             justify-content: center;
         }
+
+        @media screen and (max-width: 1080px) {
+            gap: 20px;        
+        }
+    }
+
+    @media screen and (max-width: 1080px) {
+        gap: 20px;
     }
 }

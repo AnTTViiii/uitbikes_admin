@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import './overall-list.css'
-import data from '../configs/data'
 import { PaidRounded, Inventory2Rounded, LocalShippingRounded, Person2Rounded } from '@mui/icons-material'
 import axios from 'axios'
 import { dot3digits } from '../configs/functions'
@@ -36,7 +35,7 @@ const OverallList = () => {
           { ...overall[3], value: responses[3].data }
         ]);
       });
-  }, []);
+  }, [overall]);
 
   console.log(overall);
   return (

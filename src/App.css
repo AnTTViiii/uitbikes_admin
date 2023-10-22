@@ -97,7 +97,7 @@ body {
   padding: 0 calc(30px / 2) ;
 
   @media screen and (max-width: 1080px) {
-      padding: 0 calc(20px / 2) ;
+    padding: 0 calc(20px / 2) ;
   }
 }
 

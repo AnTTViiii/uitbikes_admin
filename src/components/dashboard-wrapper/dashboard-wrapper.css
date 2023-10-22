@@ -20,7 +20,7 @@
         width: 240px;
         background-color: #fff;
         height: 100vh;
-        padding: 20px 30px;
+        padding: 20px;
         border-top-left-radius: 20px;
         border-bottom-left-radius: 20px;
         position: fixed;
@@ -30,7 +30,6 @@
         
         @media screen and (max-width: 1080px) {
             position: relative;
-            padding: 20px;
             border-radius: 20px;
             margin-top: 20px;
             width: 100%;

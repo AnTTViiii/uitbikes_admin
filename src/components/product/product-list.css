@@ -1,7 +1,12 @@
 .product-list {
     width: 100%;
+    
+    >div:nth-child(1) {
+        display: flex;
+        justify-content: space-between;
+    }
 
-    >div {
+    >div:nth-child(2) {
         width: 100%;
         overflow-x: scroll;
     }
