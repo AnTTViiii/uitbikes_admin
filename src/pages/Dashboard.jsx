@@ -52,7 +52,7 @@ const Dashboard = () => {
         </div>
       </DashboardWrapperMain>
       <DashboardWrapperRight>
-        <div className="title mbc">Overall</div>
+        <div className="title mbc">Thống kê</div>
         <div className="mb">
           <OverallList />
         </div>
