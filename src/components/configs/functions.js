@@ -28,7 +28,7 @@ export const dot3digits = (x) => {
 
 export const getTypeName = (x) => {
     let type = '';
-    switch(x) {
+    switch (x) {
         case 1: type = 'Xe số'; break;
         case 2: type = 'Tay ga'; break;
         case 3: type = 'Xe PKL'; break;
@@ -39,7 +39,7 @@ export const getTypeName = (x) => {
 
 export const getBrandName = (x) => {
     let brand = '';
-    switch(x) {
+    switch (x) {
         case 1: brand = 'Honda'; break;
         case 2: brand = 'Suzuki'; break;
         case 3: brand = 'Yamaha'; break;
@@ -57,7 +57,7 @@ export const getItemQuantity = (item) => {
 
 export const getInvoiceStatusName = (status) => {
     let name = '';
-    switch(status) {
+    switch (status) {
         case 0: name = "Chờ xác nhận"; break;
         case 1: name = "Đang giao"; break;
         case 2: name = "Đã giao"; break;
@@ -69,7 +69,7 @@ export const getInvoiceStatusName = (status) => {
 
 export const getChargeRequestStatusName = (status) => {
     let name = '';
-    switch(status) {
+    switch (status) {
         case 0: name = "Chờ xác nhận"; break;
         case 1: name = "Đã duyệt"; break;
         case 2: name = "Từ chối"; break;
@@ -82,6 +82,24 @@ export const Transition = forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
 
+export const typeData = [
+    {
+        id: 0,
+        name: "Tất cả",
+    },
+    {
+        id: 1,
+        name: "Xe số",
+    },
+    {
+        id: 2,
+        name: "Xe tay ga",
+    },
+    {
+        id: 3,
+        name: "Xe phân khối lớn",
+    },
+];
 export const getGender = (gender) => {
     return gender === 1 ? 'Nữ' : (gender === 0 ? 'Nam' : '/')
 }
