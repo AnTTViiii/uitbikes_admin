@@ -5,7 +5,6 @@ import {
 } from "@mui/icons-material";
 import { Button } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import ProductData from "../configs/Product";
 import { getTypeName, getBrandName, dot3digits } from "../configs/functions";
 import "./product-list.css";
 import TypeList from "../type/TypeList";
@@ -25,6 +24,9 @@ const ProductList = () => {
       .get("http://localhost:9090/api/products/type/" + val)
       .then((response) => {
         setData(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
       });
     setType(val);
     sessionStorage.setItem("type", JSON.stringify(val));
@@ -35,6 +37,9 @@ const ProductList = () => {
         .get("http://localhost:9090/api/products/type/" + type)
         .then((response) => {
           setData(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
         });
     }
   }, [type, data]);

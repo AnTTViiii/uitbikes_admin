@@ -1,48 +1,65 @@
-import React from 'react'
-import DashboardWrapper, { DashboardWrapperMain, DashboardWrapperRight } from '../components/dashboard-wrapper/DashboardWrapper'
-import data from '../components/configs/data'
-import SummaryBox, { SummaryBoxSpecial } from '../components/summary-box/SummaryBox'
-import Box from '../components/box/Box'
-import { Bar } from 'react-chartjs-2'
+import React from "react";
+import DashboardWrapper, {
+  DashboardWrapperMain,
+  DashboardWrapperRight,
+} from "../components/dashboard-wrapper/DashboardWrapper";
+import data from "../components/configs/data";
+import SummaryBox, {
+  SummaryBoxSpecial,
+} from "../components/summary-box/SummaryBox";
+import Box from "../components/box/Box";
+import { Bar } from "react-chartjs-2";
 import {
-  Chart as ChartJS, CategoryScale, LinearScale, 
-  PointElement, BarElement, Title, Tooltip, Legend 
-} from 'chart.js'
-import OverallList from '../components/overall-list/OverallList'
-import RevenueList from '../components/revenue-list/RevenueList'
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
+import OverallList from "../components/overall-list/OverallList";
+import RevenueList from "../components/revenue-list/RevenueList";
 
 ChartJS.register(
-  CategoryScale, LinearScale, PointElement, 
-  BarElement, Title, Tooltip, Legend
-)
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 const Dashboard = () => {
   return (
     <DashboardWrapper>
       <DashboardWrapperMain>
-      <div className="row">
-        <div className="col-8 col-md-12">
-          <div className="row">
-            {
-              data.summary.map((item, index) => (
-                <div key={`summary-${index}`} className="col-6 col-md-6 col-sm-12 mb">
+        <div className="row">
+          <div className="col-8 col-md-12">
+            <div className="row">
+              {data.summary.map((item, index) => (
+                <div
+                  key={`summary-${index}`}
+                  className="col-6 col-md-6 col-sm-12 mb"
+                >
                   <SummaryBox item={item} />
                 </div>
-              ))
-            }
+              ))}
+            </div>
+          </div>
+          <div className="col-4 hide-md">
+            <SummaryBoxSpecial item={data.revenueSummary} />
           </div>
         </div>
-        <div className="col-4 hide-md">
-          <SummaryBoxSpecial item={data.revenueSummary} />
+        <div className="row">
+          <div className="col-12">
+            <Box>
+              <RevenueByMonthsChart />
+            </Box>
+          </div>
         </div>
-      </div>
-      <div className="row">
-        <div className="col-12">
-          <Box>
-            <RevenueByMonthsChart />
-          </Box>
-        </div>
-      </div>
       </DashboardWrapperMain>
       <DashboardWrapperRight>
         <div className="title mbc">Overall</div>
@@ -55,12 +72,12 @@ const Dashboard = () => {
         </div>
       </DashboardWrapperRight>
     </DashboardWrapper>
-  )
-}
+  );
+};
 
-export default Dashboard
+export default Dashboard;
 
-const RevenueByMonthsChart= () => {
+const RevenueByMonthsChart = () => {
   const chartOptions = {
     responsive: true,
     maintainAspectRatio: false,
@@ -68,41 +85,41 @@ const RevenueByMonthsChart= () => {
       xAxes: {
         grid: {
           display: false,
-          drawBorder: false
-        }
+          drawBorder: false,
+        },
       },
       yAxes: {
         grid: {
           display: false,
-          drawBorder: false
-        }
-      }
+          drawBorder: false,
+        },
+      },
     },
     plugins: {
       legend: {
-        display: false
+        display: false,
       },
       title: {
-        display: false
-      }
+        display: false,
+      },
     },
     elements: {
       bar: {
-        backgroundColor: '#9772FB',
+        backgroundColor: "#9772FB",
         borderRadius: 20,
-        borderSkipped: 'bottom'
-      }
-    }
-  }
+        borderSkipped: "bottom",
+      },
+    },
+  };
   const chartData = {
     labels: data.revenueByMonths.labels,
     datasets: [
       {
-        label: 'Revenue',
-        data: data.revenueByMonths.data
-      }
-    ]
-  }
+        label: "Revenue",
+        data: data.revenueByMonths.data,
+      },
+    ],
+  };
   return (
     <>
       <div className="title">Revenue by months</div>
@@ -110,5 +127,5 @@ const RevenueByMonthsChart= () => {
         <Bar options={chartOptions} data={chartData} height={`300px`} />
       </div>
     </>
-  )
-}
+  );
+};
