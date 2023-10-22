@@ -1,4 +1,5 @@
 import { Slide } from "@mui/material";
+import axios from "axios";
 import { forwardRef } from "react";
 
 export const colors = {
@@ -107,5 +108,5 @@ export const typeData = [
     },
 ];
 export const getGender = (gender) => {
-    return gender === 1 ? 'Nữ' : (gender === 0 ? 'Nam' : 'Khác' )
+    return gender === 1 ? 'Nữ' : (gender === 0 ? 'Nam' : 'Khác')
 }

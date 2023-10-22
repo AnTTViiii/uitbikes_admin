@@ -9,16 +9,24 @@ import { dot3digits } from "../configs/functions";
 import "./product-list.css";
 import TypeList from "../type/TypeList";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const ProductList = () => {
   // const [display, setDisplay] = useState(false);
   const [data, setData] = useState([]);
-  const [type, setType] = useState(0);
+  const [type, setType] = useState(
+    sessionStorage.getItem("type")
+      ? JSON.parse(sessionStorage.getItem("type"))
+      : 0
+  );
   const handleChangeType = (val) => {
     axios
       .get("http://localhost:9090/api/products/type/" + val)
       .then((response) => {
         setData(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
       });
     setType(val);
     sessionStorage.setItem("type", JSON.stringify(val));
@@ -29,6 +37,9 @@ const ProductList = () => {
         .get("http://localhost:9090/api/products/type/" + type)
         .then((response) => {
           setData(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
         });
     }
   }, [type, data]);
@@ -43,10 +54,12 @@ const ProductList = () => {
           justifyContent: "space-between",
         }}
       >
-        <Button className="create-btn">
-          <BorderColorRounded />
-          Thêm xe mới
-        </Button>
+        <Link to={"/new-product"}>
+          <Button className="create-btn">
+            <BorderColorRounded />
+            Thêm xe mới
+          </Button>
+        </Link>
         <TypeList handleChangeType={handleChangeType} />
       </div>
       <div>
@@ -67,7 +80,7 @@ const ProductList = () => {
           </tr>
           {data &&
             data.map((product, index) => (
-              <tr>
+              <tr key={product.id}>
                 <td>{index + 1}</td>
                 <td className="img">
                   <img src={product.image} alt={product.name} />
@@ -85,14 +98,16 @@ const ProductList = () => {
                 <td>{dot3digits(product.price)}</td>
                 <td>{product.quantity}</td>
                 <td>
-                  {product.is_active ? (
+                  {product.isActive ? (
                     <VisibilityRounded />
                   ) : (
                     <VisibilityOffRounded />
                   )}
                 </td>
                 <td>
-                  <p className="edit-btn">Sửa</p>
+                  <Link to={"/edit-product/" + product.id} state={product}>
+                    <p className="edit-btn">Sửa</p>
+                  </Link>
                 </td>
               </tr>
             ))}

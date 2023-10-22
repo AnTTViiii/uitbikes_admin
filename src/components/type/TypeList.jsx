@@ -16,11 +16,13 @@ function TypeList({ handleChangeType }) {
   const [open, setOpen] = useState(false);
   const anchorRef = useRef(null);
   const options = typeData;
-  const [selectedIndex, setSelectedIndex] = useState(options[0].name);
-  const handleMenuItemClick = (event, index) => {
-    setSelectedIndex(index);
-    setOpen(false);
-  };
+  const [selectedIndex, setSelectedIndex] = useState(
+    options[
+      sessionStorage.getItem("type")
+        ? JSON.parse(sessionStorage.getItem("type"))
+        : 0
+    ].name
+  );
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
   };
