@@ -1,5 +1,5 @@
-import { BorderColorRounded, ClearRounded, Create } from '@mui/icons-material'
-import { Button, TextField, Dialog, DialogActions, DialogContent, DialogTitle, IconButton } from '@mui/material'
+import { BorderColorRounded, ClearRounded } from '@mui/icons-material'
+import { Button, TextField, Dialog, DialogContent, IconButton } from '@mui/material'
 import React, { useRef, useState } from 'react'
 import { Brand } from '../configs/Product'
 import './brand-list.css'
@@ -17,7 +17,7 @@ const BrandList = () => {
 
     return (
         <div className='brand-list'>
-            <Button className="create-brand-btn" onClick={openCreatePopup}>
+            <Button className="create-btn" onClick={openCreatePopup}>
                 <BorderColorRounded />
                 Thêm hãng mới
             </Button>

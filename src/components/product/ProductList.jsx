@@ -46,12 +46,11 @@ const ProductList = () => {
       <div
         style={{
           display: "flex",
-          flexDirection: "row",
           justifyContent: "space-between",
         }}
       >
         <Link to={"/new-product"}>
-          <Button className="create-product-btn">
+          <Button className="create-btn">
             <BorderColorRounded />
             Thêm xe mới
           </Button>

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { Transition, dot3digits, getGender, invoiceStatus } from '../configs/functions';
-import { Button, Dialog, DialogContent, MenuItem, Select } from '@mui/material';
+import { Transition, dot3digits, getGender, invoiceStatus, getInvoiceStatusNotify } from '../configs/functions';
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle, MenuItem, Select } from '@mui/material';
 import './order-list.css'
 //import Invoice from '../configs/Invoice'
 
@@ -15,9 +15,15 @@ const OrderList = () => {
     }, []);
 
     //setInvoice(Invoice); //if data not exists
-    const updateStatus = (e) => {
+    async function updateStatus(e, id) {
         e.preventDefault();
         console.log(e.target.value);
+        try {
+            await axios.put(`http://localhost:9090/api/invoices/${id}/status/${e.target.value}`);
+            alert('Đơn hàng #' + id + ' ' + getInvoiceStatusNotify(e.target.value) + '.')
+        } catch (error) {
+            alert(error);
+        }
     }
 
     const [customerInfoPopup, setCustomerInfoPopup] = useState(false);
@@ -51,9 +57,9 @@ const OrderList = () => {
                         <td><p onClick={() => {openInvoiceDetailPopup(); setInvoiceDetail(item.details)}}>Xem</p></td>
                         <td>{dot3digits(item.total)} đ</td>
                         <td>
-                            <Select className='select-box' defaultValue={item.status} size='small' onChange={updateStatus}>
+                            <Select className='select-box' defaultValue={item.status} size='small' onChange={(e) => updateStatus(e, item.id)}>
                                 {invoiceStatus.map((status, index) =>  (
-                                    <MenuItem value={index}>{status}</MenuItem>
+                                    <MenuItem disabled={index < item.status || (item.status === 2 && index === 3)} value={index}>{status}</MenuItem>
                                 ))}
                             </Select>
                         </td>
@@ -65,18 +71,30 @@ const OrderList = () => {
                     keepMounted onClose={closeCutomerInfoPopup}
                     aria-describedby="alert-dialog-slide-description"
             >
+                <DialogTitle>
+                    <h2>Thông tin khách hàng</h2>
+                </DialogTitle>
                 <DialogContent>
-                    <CustomerInfo info={customerInfo} closePopup={closeCutomerInfoPopup}/>
+                    <CustomerInfo info={customerInfo} />
                 </DialogContent>
+                <DialogActions>
+                    <Button onClick={closeCutomerInfoPopup}>Đóng</Button>
+                </DialogActions>
             </Dialog>
 
             <Dialog open={invoiceDetailPopup} TransitionComponent={Transition}
                     keepMounted onClose={closeInvoiceDetailPopup}
                     aria-describedby="alert-dialog-slide-description"
             >
+                <DialogTitle>
+                    <h2>Chi tiết đơn đặt hàng</h2>
+                </DialogTitle>
                 <DialogContent>
-                    <OrderDetails details={invoiceDetail} closePopup={closeInvoiceDetailPopup}/>
+                    <OrderDetails details={invoiceDetail} />
                 </DialogContent>
+                <DialogActions>
+                    <Button onClick={closeInvoiceDetailPopup}>Đóng</Button>
+                </DialogActions>
             </Dialog>
         </div>
     )
@@ -84,48 +102,41 @@ const OrderList = () => {
 
 export default OrderList
 
-export const OrderDetails = props => {
-    const details = props.details;
+export const OrderDetails = ({details}) => {
     return (
-        <div className='order-detail'>
-            <h1>Chi tiết đơn đặt hàng</h1>
-            <table>
+        <table className='table-2 order-detail'>
+            <tr>
+                <th>STT</th>
+                <th>Mã SP</th>
+                <th>Tên SP</th>
+                <th>Màu</th>
+                <th>Giá (đ)</th>
+                <th>Số lượng</th>
+            </tr>
+            {details.map((d, index) => (
                 <tr>
-                    <th>STT</th>
-                    <th>Mã SP</th>
-                    <th>Tên SP</th>
-                    <th>Màu</th>
-                    <th>Giá</th>
-                    <th>Số lượng</th>
+                    <td>{index+1}</td>
+                    <td>{d.product.id}</td>
+                    <td>{d.product.name}</td>
+                    <td>{d.product.color}</td>
+                    <td>{dot3digits(d.product.price)}</td>
+                    <td>{d.quantity}</td>
                 </tr>
-                {details.map((d, index) => (
-                    <tr>
-                        <td>{index+1}</td>
-                        <td>{d.product.id}</td>
-                        <td>{d.product.name}</td>
-                        <td>{d.product.color}</td>
-                        <td>{d.product.price}</td>
-                        <td>{d.quantity}</td>
-                    </tr>
-                ))}
-            </table>
-            <Button onClick={props.closePopup}>OK</Button>
-        </div>
+            ))}
+        </table>
     )
 }
 
-export const CustomerInfo = props => {
+export const CustomerInfo = ({info}) => {
     return (
-        <div className='order-detail'>
-            <h1>Thông tin khách hàng</h1>
-            <div>
-                <p>Tên KH: <span>{props.info.name}</span></p>
-                <p>Giới tính: <span>{getGender(props.info.gender)}</span></p>
-                <p>Địa chỉ: <span>{props.info.address}</span></p>
-                <p>SĐT: <span>{props.info.phone}</span></p>
-                <p>CCCD/CMT: <span>{props.info.idNumber}</span></p>
-            </div>
-            <Button onClick={props.closePopup}>OK</Button>
+        <div className='customer-info'>
+            <p>
+                <span><b>Tên KH:</b> {info.name}</span> 
+                <span><b>Giới tính:</b> {getGender(info.gender)}</span>
+            </p>
+            <p><b>CCCD/CMT:</b> <span>{info.idNumber}</span></p>
+            <p><b>Địa chỉ:</b> <span>{info.address}</span></p>
+            <p><b>SĐT:</b> <span>{info.phone}</span></p>
         </div>
     )
 }

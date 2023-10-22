@@ -17,6 +17,12 @@ export const invoiceStatus = [
     "Đã hủy"
 ]
 
+export const getInvoiceStatusNotify = (status) => {
+    if (status === 1) return "đang được giao";
+    else if (status === 2) return "đã được giao";
+    else return "đã bị hủy"
+}
+
 export const requestStatus = [
     'Chờ xác nhận',
     "Đang duyệt",
@@ -102,7 +108,7 @@ export const typeData = [
     },
 ];
 export const getGender = (gender) => {
-    return gender === 1 ? 'Nữ' : (gender === 0 ? 'Nam' : '/')
+    return gender === 1 ? 'Nữ' : (gender === 0 ? 'Nam' : 'Khác' )
 }
 
 const processFileImage = async (e) => {
