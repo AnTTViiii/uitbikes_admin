@@ -1,7 +1,6 @@
 import React, { useRef, useState } from "react";
 import { typeData } from "../configs/functions";
 import {
-  Box,
   Button,
   ButtonGroup,
   ClickAwayListener,

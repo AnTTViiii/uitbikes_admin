@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import DashboardWrapper, { DashboardWrapperMain, DashboardWrapperRight } from '../components/dashboard-wrapper/DashboardWrapper'
 import data from '../components/configs/data'
 import SummaryBox, { SummaryBoxSpecial } from '../components/summary-box/SummaryBox'
@@ -10,6 +10,7 @@ import {
 } from 'chart.js'
 import OverallList from '../components/overall-list/OverallList'
 import RevenueList from '../components/revenue-list/RevenueList'
+import axios from 'axios'
 
 ChartJS.register(
   CategoryScale, LinearScale, PointElement, 
@@ -61,6 +62,16 @@ const Dashboard = () => {
 export default Dashboard
 
 const RevenueByMonthsChart= () => {
+  const [revenueByMonths, setRevenueByMonths] = useState([]);
+  useEffect(() => {
+    axios.get(`http://localhost:9090/invoices/revenue/revenuebymonth`)
+      .then(response => {
+        setRevenueByMonths(response.data);
+      });
+  }, []);
+
+  console.log(revenueByMonths);
+
   const chartOptions = {
     responsive: true,
     maintainAspectRatio: false,
@@ -95,11 +106,11 @@ const RevenueByMonthsChart= () => {
     }
   }
   const chartData = {
-    labels: data.revenueByMonths.labels,
+    labels: revenueByMonths.labels,
     datasets: [
       {
         label: 'Revenue',
-        data: data.revenueByMonths.data
+        data: revenueByMonths.data
       }
     ]
   }

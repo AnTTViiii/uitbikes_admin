@@ -5,14 +5,13 @@ import {
 } from "@mui/icons-material";
 import { Button } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import ProductData from "../configs/Product";
-import { getTypeName, getBrandName, dot3digits } from "../configs/functions";
+import { dot3digits } from "../configs/functions";
 import "./product-list.css";
 import TypeList from "../type/TypeList";
 import axios from "axios";
 
 const ProductList = () => {
-  const [display, setDisplay] = useState(false);
+  // const [display, setDisplay] = useState(false);
   const [data, setData] = useState([]);
   const [type, setType] = useState(0);
   const handleChangeType = (val) => {
