@@ -1,0 +1,150 @@
+table.table-1 {
+    border-collapse: collapse;
+    width: 100%;
+
+    >tr:nth-child(odd):not(:first-child) {
+        background-color: #e8e8e8;
+    }
+
+    >tr:not(:first-child) {
+        border-bottom: 1px solid silver;
+    }
+
+    >tr:nth-child(1) {
+        background-color: #6734ff;
+        color: white;
+
+        >th {
+            padding: 10px 5px;
+
+            &:first-child {
+                border-top-left-radius: 10px;
+            }
+
+            &:last-child {
+                border-top-right-radius: 10px;
+            }
+        }
+    }
+
+    >tr>td {
+        padding: 5px;
+        text-align: center;
+        overflow: hidden;
+        vertical-align: middle;
+
+        >img {
+            height: 2rem;
+            width: 3rem;
+            object-fit: contain;
+        }
+
+        .col-name {
+            text-wrap: nowrap;
+            overflow-x: scroll;
+            text-align: left;
+            width: 20vw;
+        }
+
+        .view-btn, .del-btn {
+            color: white;
+            border-radius: 5px;
+            padding: 5px 10px;
+            width: fit-content;
+            display: inline-block;
+            text-align: center;
+            cursor: pointer;
+
+            &:hover {
+                box-shadow: 0px 3px 1.2rem #979797;
+            }
+        }
+
+        .edit-btn {
+            background-color: green;
+        }
+
+        .del-btn {
+            background-color: #ce252a;
+        }
+    }
+}
+
+.customer-list {
+    .customer-list-table {
+        >tr>td:nth-child(3) {
+            text-align: center;
+        }
+    }
+}
+
+.popup-title {
+    display: flex;
+    position: relative;
+    width: 100%;
+    justify-content: center;
+
+    >h2 {
+        margin: 20px;
+    }
+
+    .popup-close-btn {
+        position: absolute;
+        top: -20px;
+        right: -20px;
+        color:#ce252a;
+    }
+}
+
+.create-btn {
+    display: flex;
+    gap: 10px
+}
+
+#customer-img {
+    display: none;
+}
+
+#customer-img-label {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid black;
+    text-align: left;
+    width: 100%;
+}
+
+.view-customer {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: left;
+    align-items: left;
+
+    .popup-submit-btn {
+        width: fit-content;
+        text-transform: none;
+        background-color: #6734ff;
+
+        &:hover {
+            background-color: #6734ff;
+        }
+    }
+}
+.view-customer > tr >th{
+    width: 150px;
+    text-align: left;
+}
+.customer-name {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+
+    >input {
+        padding: 15px 10px;
+        font-size: medium;
+        border: 1px solid black;
+        border-radius: 5px;
+    }
+
+}
