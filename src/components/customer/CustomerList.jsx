@@ -50,7 +50,7 @@ function CustomerList() {
                             <td>{item.username}</td>
                             <td>{item.customer.phone}</td>
                             <td>
-                              <p>{item.customer.balance}</p>
+                              <p>{new Intl.NumberFormat('vi-VN',{style: 'decimal',decimal: 'VND'}).format(item.customer.balance)+ ' VNĐ'}</p>
                             </td>
                             <td onClick={() => {openViewPopup(); setCustomerInfo(item)}}>
                                 <Visibility/>
@@ -129,7 +129,7 @@ export const ViewCustomer = (props) => {
         </tr>
         <tr>
           <th>Số dư ví</th>
-          <td>{props.customer.balance}</td>
+          <td> <p>{new Intl.NumberFormat('vi-VN',{style: 'decimal',decimal: 'VND'}).format(props.customer.balance)+ ' VNĐ'}</p></td>
         </tr>
       </div>
   )
