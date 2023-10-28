@@ -46,6 +46,9 @@ const ProductList = () => {
   // function handleDisplay() {
   //     setDisplay(!display)
   // }
+  const handleSetActive = () => {
+    
+  }
   return (
     <div className="product-list">
       <div>
