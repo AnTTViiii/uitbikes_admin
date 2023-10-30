@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import { Visibility } from '@mui/icons-material'
 import { Avatar, Button, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material'
 import { useState } from 'react'
 import './customerlist.css'
@@ -27,37 +26,36 @@ function CustomerList() {
 
   return (
     <div className='customer-list'>
-            <table className='table-1 customer-list-table'>
-                <tr>
-                    <th>ID</th>
-                    <th>Avatar</th>
-                    <th>Username</th>
-                    <th>Số điện thoại</th>
-                    <th>Số dư ví</th>
-                    <th>Thao tác</th>
-                </tr>
-                {data.map((item) => (
-                        <tr>
-                            <td>{item.customer.id}</td>
-                            <td className='img' style={{textAlign:'-webkit-center'}}>
-                            <Avatar
-                              src={item.avatar}
-                              alt={item.customer.id}
-                              sx={{ width: "3vw", height: "3vw"}}
-                            />
-                            </td>
-                            <td>{item.username}</td>
-                            <td>{item.customer.phone}</td>
-                            <td>
-                              <p>{dot3digits(item.customer.balance)} </p>
-                            </td>
-                            <td onClick={() => {openViewPopup(); setCustomerInfo(item)}}>
-                                <Visibility/>
-                            </td>
-                        </tr>
-                    ))
-                }
-            </table>
+      <table className='table-1 customer-list-table'>
+        <tr>
+            <th>ID</th>
+            <th>Avatar</th>
+            <th>Username</th>
+            <th>Số điện thoại</th>
+            <th>Số dư ví</th>
+            <th>Thao tác</th>
+        </tr>
+        {
+          data.map((item) => (
+            <tr>
+              <td>{item.customer.id}</td>
+              <td className='img' style={{textAlign:'-webkit-center'}}>
+                <Avatar
+                  src={item.avatar}
+                  alt={item.customer.id}
+                  sx={{ width: "3vw", height: "3vw"}}
+                />
+              </td>
+              <td>{item.username}</td>
+              <td>{item.customer.phone}</td>
+              <td>{dot3digits(item.customer.balance)}</td>
+              <td onClick={() => {openViewPopup(); setCustomerInfo(item.customer)}}>
+                <p className='edit-btn'>Xem chi tiết</p>
+              </td>
+            </tr>
+          ))
+        }
+      </table>
 
       <Dialog
         open={viewPopup}
@@ -82,6 +80,7 @@ function CustomerList() {
 export default CustomerList;
 
 export const ViewCustomer = (props) => {
+  console.log(props.customer.balance)
   return (
       <div className='view-customer'>
         <tr style={{textAlign:'-webkit-center'}}>
@@ -98,16 +97,8 @@ export const ViewCustomer = (props) => {
           <td>{props.customer.id}</td>
         </tr>
         <tr>
-          <th>Username</th>
-          <td>{props.customer.username}</td>
-        </tr>
-        <tr>
           <th>Tên</th>
           <td>{props.customer.name}</td>
-        </tr>
-        <tr>
-          <th>Email</th>
-          <td>{props.customer.email}</td>
         </tr>
         <tr>
           <th>Số điện thoại</th>
@@ -131,7 +122,7 @@ export const ViewCustomer = (props) => {
         </tr>
         <tr>
           <th>Số dư ví</th>
-          <td>{dot3digits(props.customer.balance)} VNĐ</td>
+          <td>{(props.customer.balance)} VNĐ</td>
         </tr>
       </div>
   )
