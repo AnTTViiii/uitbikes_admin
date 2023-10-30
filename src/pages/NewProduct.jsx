@@ -189,10 +189,20 @@ function NewProduct() {
             <TextField fullWidth label="Màu" inputRef={colorRef} />
           </Grid>
           <Grid item md={3} sm={6} xs={12}>
-            <TextField label="Năm sản xuất" fullWidth inputRef={dateRef} />
+            <TextField
+              label="Năm sản xuất"
+              fullWidth
+              inputRef={dateRef}
+              type="number"
+            />
           </Grid>
           <Grid item md={3} sm={6} xs={12}>
-            <TextField label="Phân khối" fullWidth inputRef={ccRef} />
+            <TextField
+              label="Phân khối"
+              fullWidth
+              inputRef={ccRef}
+              type="number"
+            />
           </Grid>
           <Grid item md={3} sm={6} xs={12}>
             <TextField

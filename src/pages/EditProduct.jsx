@@ -217,6 +217,7 @@ function EditProduct() {
             <TextField
               label="Phân khối"
               fullWidth
+              type="number"
               defaultValue={product.cc}
               inputRef={ccRef}
             />

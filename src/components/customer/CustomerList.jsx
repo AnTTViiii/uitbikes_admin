@@ -5,25 +5,26 @@ import { useState } from 'react'
 import './customerlist.css'
 import { Transition } from '../configs/functions'
 import { dot3digits } from "../configs/functions";
-import axios from 'axios'
+import axios from "axios";
 
 function CustomerList() {
-    const [viewPopup, setViewPopup] = useState(false);
-    const openViewPopup = () => setViewPopup(true);
-    const closeViewPopup = () => setViewPopup(false);
-    const [customerInfo, setCustomerInfo] = useState([]);
-    const [data, setData] = useState([]);
+  const [viewPopup, setViewPopup] = useState(false);
+  const openViewPopup = () => setViewPopup(true);
+  const closeViewPopup = () => setViewPopup(false);
+  const [customerInfo, setCustomerInfo] = useState([]);
+  const [data, setData] = useState([]);
 
-    useEffect(() => {
-        axios.get("http://localhost:9090/api/accounts")
-            .then((response) => {
-              setData(response.data);
-            })
-            .catch((error) => {
-              console.log(error);
-            });
-    }, [data]);
-  
+  useEffect(() => {
+    axios
+      .get("http://localhost:9090/api/accounts")
+      .then((response) => {
+        setData(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [data]);
+
   return (
     <div className='customer-list'>
             <table className='table-1 customer-list-table'>
@@ -58,22 +59,25 @@ function CustomerList() {
                 }
             </table>
 
-            <Dialog open={viewPopup} TransitionComponent={Transition}
-                    keepMounted onClose={closeViewPopup}
-                    aria-describedby="alert-dialog-slide-description"
-            >
-                <DialogTitle>
-                    <h3>Chi tiết khách hàng</h3>
-                </DialogTitle>
-                <DialogContent>
-                    <ViewCustomer customer={customerInfo}/>
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={closeViewPopup}>Đóng</Button>
-                </DialogActions>
-            </Dialog>
-        </div>
-  )
+      <Dialog
+        open={viewPopup}
+        TransitionComponent={Transition}
+        keepMounted
+        onClose={closeViewPopup}
+        aria-describedby="alert-dialog-slide-description"
+      >
+        <DialogTitle>
+          <h3>Chi tiết khách hàng</h3>
+        </DialogTitle>
+        <DialogContent>
+          <ViewCustomer customer={customerInfo} />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={closeViewPopup}>Đóng</Button>
+        </DialogActions>
+      </Dialog>
+    </div>
+  );
 }
 export default CustomerList;
 
