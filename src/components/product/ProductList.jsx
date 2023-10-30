@@ -12,13 +12,14 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 const ProductList = () => {
-  // const [display, setDisplay] = useState(false);
+  const [changeActive, setChangeActive] = useState(false);
   const [data, setData] = useState([]);
   const [type, setType] = useState(
     sessionStorage.getItem("type")
       ? JSON.parse(sessionStorage.getItem("type"))
       : 0
   );
+
   const handleChangeType = (val) => {
     axios
       .get("http://localhost:9090/api/products/type/" + val)
@@ -41,13 +42,28 @@ const ProductList = () => {
         .catch((error) => {
           console.log(error);
         });
+    } else {
+      if (changeActive) {
+        axios
+        .get("http://localhost:9090/api/products/type/" + type)
+        .then((response) => {
+          setData(response.data);
+          setChangeActive(false);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      }
     }
-  }, [type, data]);
-  // function handleDisplay() {
-  //     setDisplay(!display)
-  // }
-  const handleSetActive = () => {
-    
+  }, [type, data, changeActive]);
+  
+  async function setActive(id, isActive) {
+    try {
+        await axios.put(`http://localhost:9090/api/products/${id}/is-active/${isActive}`)
+          .then(res => setChangeActive(true))
+    } catch (error) {
+        console.log(error);
+    }
   }
   return (
     <div className="product-list">
@@ -97,9 +113,9 @@ const ProductList = () => {
                 <td>{product.quantity}</td>
                 <td>
                   {product.isActive ? (
-                    <VisibilityRounded />
+                    <VisibilityRounded onClick={() => setActive(product.id, 0)} />
                   ) : (
-                    <VisibilityOffRounded />
+                    <VisibilityOffRounded onClick={() => setActive(product.id, 1)} />
                   )}
                 </td>
                 <td>

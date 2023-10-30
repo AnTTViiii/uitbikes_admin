@@ -17,7 +17,7 @@ const UpdateBrand = () => {
         axios.get(`http://localhost:9090/api/brands/${id}`)
             .then((res) => setBrand(res.data))
             .catch((err) => {console.log(err)})
-    }, [brand])
+    }, [brand, id])
     
     const [imageUrl, setImageUrl] = useState("");
     const [loadSuccess, setLoadSuccess] = useState(false);

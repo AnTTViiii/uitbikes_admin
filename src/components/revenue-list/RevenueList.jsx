@@ -28,7 +28,6 @@ const RevenueList = () => {
           });
     }, [rates]);
     
-    console.log(rates);
     return (
         <ul className='revenue-list'>
             {

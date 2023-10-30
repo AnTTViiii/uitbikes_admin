@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './side-bar.css'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import sidebar from '../configs/sidebar'
 import { ClearRounded, LogoutRounded } from '@mui/icons-material'
 import { authActions } from '../stores/auth'
@@ -12,6 +12,7 @@ import { Transition } from '../configs/functions'
 //     return <Slide direction="up" ref={ref} {...props} />;
 // });
 const SideBar = () => {
+    const navigate = useNavigate();
     const [activeIndex, setActiveIndex] = useState(0);
     const location = useLocation();
     const dispatch = useDispatch();
@@ -40,6 +41,7 @@ const SideBar = () => {
     const handleLogout = () => {
         dispatch(authActions.logout(account));
         handleCloseLogoutPopup();
+        navigate('/');
     };
 
     return (

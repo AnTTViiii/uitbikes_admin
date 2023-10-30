@@ -226,7 +226,7 @@ function EditProduct() {
               label="Giá sản phẩm"
               fullWidth
               type="number"
-              defaultValue={dot3digits(product.price)}
+              defaultValue={product.price}
               inputRef={priceRef}
             />
           </Grid>

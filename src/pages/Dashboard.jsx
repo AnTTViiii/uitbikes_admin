@@ -56,9 +56,7 @@ const Dashboard = () => {
           { ...summary[2], subtitle: responses[2].data[1], value: responses[2].data[3], percent: responses[2].data[3]/responses[3].data*100 }
         ]);
       });
-  }, []);
-
-console.log(summary);
+  }, [summary]);
 
   return (
     <DashboardWrapper>

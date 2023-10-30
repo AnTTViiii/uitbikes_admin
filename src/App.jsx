@@ -2,7 +2,6 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainLayout from "./layout/MainLayout";
 import Dashboard from "./pages/Dashboard";
-import Blank from "./pages/Blank";
 import Login from "./pages/Login";
 import Customers from "./pages/Customers";
 import Brands from "./pages/Brands";
@@ -17,12 +16,12 @@ import BrandUpdate from "./pages/BrandUpdate";
 
 function App() {
   const { isAuthed } = useSelector((state) => state.auth);
-  const login = isAuthed ? true : false;
+  const user = isAuthed ? JSON.parse(localStorage.getItem('user')) : [];
 
   return (
     <BrowserRouter>
       <Routes>
-        {login ? (
+        {isAuthed && user != null ? (
           <Route path="/" element={<MainLayout />}>
             <Route index element={<Dashboard />} />
             <Route path="customers" element={<Customers />} />
@@ -34,10 +33,12 @@ function App() {
             <Route path="admin" element={<Admin />} />
             <Route path="new-product" element={<NewProduct />} />
             <Route path="edit-product/*" element={<EditProduct />} />
+            <Route path="*" element={<Dashboard />} />
           </Route>
         ) : (
           <Route path="/">
             <Route index element={<Login />} />
+            <Route path="*" element={<Login />} />
           </Route>
         )}
       </Routes>

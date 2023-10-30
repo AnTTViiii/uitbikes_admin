@@ -37,7 +37,6 @@ const OverallList = () => {
       });
   }, [overall]);
 
-  console.log(overall);
   return (
     <ul className='overall-list'>
       {
