@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react'
-import {ClearRounded, Visibility } from '@mui/icons-material'
-import { Avatar, Button, Dialog, DialogActions, DialogContent, DialogTitle, IconButton } from '@mui/material'
+import { Visibility } from '@mui/icons-material'
+import { Avatar, Button, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material'
 import { useState } from 'react'
-import {Account} from '../configs/Customer'
-import {Customer} from '../configs/Customer'
 import './customerlist.css'
 import { Transition } from '../configs/functions'
 import { dot3digits } from "../configs/functions";
@@ -50,7 +48,7 @@ function CustomerList() {
                             <td>{item.username}</td>
                             <td>{item.customer.phone}</td>
                             <td>
-                              <p>{new Intl.NumberFormat('vi-VN',{style: 'decimal',decimal: 'VND'}).format(item.customer.balance)+ ' VNĐ'}</p>
+                              <p>{dot3digits(item.customer.balance)} </p>
                             </td>
                             <td onClick={() => {openViewPopup(); setCustomerInfo(item)}}>
                                 <Visibility/>
@@ -129,7 +127,7 @@ export const ViewCustomer = (props) => {
         </tr>
         <tr>
           <th>Số dư ví</th>
-          <td> <p>{new Intl.NumberFormat('vi-VN',{style: 'decimal',decimal: 'VND'}).format(props.customer.balance)+ ' VNĐ'}</p></td>
+          <td>{dot3digits(props.customer.balance)} VNĐ</td>
         </tr>
       </div>
   )

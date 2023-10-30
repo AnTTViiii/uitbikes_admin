@@ -106,23 +106,3 @@ export const Invoice = [
         ]
     }
 ]
-
-const InvoiceVD = [
-    {
-        id: 1,
-        date: '2022-8-11',
-        customer_id: 1,
-        total: 31549999,
-        status: 3,
-        details: [
-            {
-                p_id: 1,
-                quantity: 1, //sl mua
-                name: 'CB150R The Streetster',
-                color: 'Đen',
-                price: 105500000,
-                image: 'https://drive.google.com/uc?export=view&id=1aaKn42E3w1adgUOUrZts9znaEZGwcmQt',
-            }
-        ]
-    },
-]
