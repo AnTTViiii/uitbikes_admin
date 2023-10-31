@@ -64,7 +64,7 @@ function AdminList() {
 
             <td>
               <Button
-                className={item.username === user.username ? "" : "edit-btn"}
+                className={item.username === user.username ? "del-btn disabled" : "del-btn"}
                 onClick={() => {
                   openViewPopup();
                   setUserName(item.username);

@@ -79,9 +79,9 @@ function CustomerList() {
 }
 export default CustomerList;
 
-export const ViewCustomer = (props) => {
-  console.log(props.customer.balance)
+export const ViewCustomer = props => {
   return (
+    props.customer !== undefined ? (
       <div className='view-customer'>
         <tr style={{textAlign:'-webkit-center'}}>
           <td colSpan={2} >
@@ -110,7 +110,7 @@ export const ViewCustomer = (props) => {
         </tr>
         <tr>
           <th>Ngày sinh</th>
-          <td>{props.customer.dob}</td>
+          <td>{props.customer.date !== undefined ? (props.customer.date == null ? '' : new Date(props.customer.date).toLocaleDateString('en-GB')) : ''}</td>
         </tr>
         <tr>
           <th>Địa chỉ</th>
@@ -118,12 +118,15 @@ export const ViewCustomer = (props) => {
         </tr>
         <tr>
           <th>Ngày đăng ký</th>
-          <td>{props.customer.registerDate}</td>
+          <td>{props.customer.registerDate !== undefined ? (props.customer.registerDate == null ? '' : new Date(props.customer.registerDate).toLocaleDateString('en-GB')) : ''}</td>
         </tr>
         <tr>
           <th>Số dư ví</th>
-          <td>{(props.customer.balance)} VNĐ</td>
+          <td>{props.customer.balance !== undefined ? dot3digits(props.customer.balance) : 0} VNĐ</td>
         </tr>
       </div>
+    ) : (
+        <></>
+    )
   )
 }

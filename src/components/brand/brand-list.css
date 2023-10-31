@@ -162,3 +162,7 @@ table.table-1 {
     width: 100%;
   }
 }
+
+.disabled {
+  opacity: 0.3;
+}
