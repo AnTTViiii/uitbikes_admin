@@ -1,0 +1,52 @@
+.request-list {
+    .request-list-table {
+        >tr {
+            >td {
+                .select-box {
+                    width: 21vh;
+                    max-width: 190px;
+                }
+
+                &:nth-child(2), &:nth-child(8) {
+                    color: #6734ff;
+                    cursor: pointer;
+                }
+                &:nth-child(4), &:nth-child(5){
+                    text-align: end;
+                }
+            }
+        }
+    }
+}
+
+.table-2 {
+    border-collapse: collapse;
+
+    >tr {
+        &:nth-child(odd) {
+            background-color: rgba(192, 192, 192, 0.267);
+        }
+
+        &:last-child {
+            border-bottom: 2px solid #6734ff;
+        }
+
+        >td, >th {
+            padding: 8px;
+            border: 1px solid silver;
+            text-align: center;
+        }
+    }
+}
+
+.customer-info {
+    >p {
+        display: flex;
+        gap: 15px;
+        justify-content: space-between;
+        margin: 0;
+        border: 1px solid silver;
+        padding: 10px;
+        border-collapse: collapse;
+    }
+}
