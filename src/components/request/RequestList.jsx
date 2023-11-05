@@ -25,7 +25,7 @@ function RequestList() {
     axios.get(`http://localhost:9090/api/requests`).then((response) => {
       setRequest(response.data);
     });
-  }, []);
+  }, [request]);
   //setRequest(request); //if data not exists
   async function updateStatus(e, id) {
     e.preventDefault();
