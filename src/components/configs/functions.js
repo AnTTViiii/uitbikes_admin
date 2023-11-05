@@ -24,7 +24,7 @@ export const getInvoiceStatusNotify = (status) => {
 
 export const requestStatus = [
     'Chờ xác nhận',
-    "Đang duyệt",
+    "Đã duyệt",
     "Từ chối"
 ]
 
@@ -71,6 +71,11 @@ export const getInvoiceStatusName = (status) => {
         default: break;
     }
     return name;
+}
+
+export const getChargeRequestStatusNotify = (status) => {
+    if (status === 1) return "đã được duyệt";
+    else if (status === 2) return "đã bị từ chối";
 }
 
 export const getChargeRequestStatusName = (status) => {
