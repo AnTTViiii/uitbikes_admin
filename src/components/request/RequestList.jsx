@@ -23,7 +23,7 @@ function RequestList() {
   const [request, setRequest] = useState([]);
   useEffect(() => {
     axios.get(`http://localhost:9090/api/requests`).then((response) => {
-      setRequest(response.data);
+      setRequest(response.data.reverse());
     });
   }, [request]);
   //setRequest(request); //if data not exists

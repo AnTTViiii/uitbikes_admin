@@ -17,17 +17,15 @@ import {
   Select,
 } from "@mui/material";
 import "./order-list.css";
-//import Invoice from '../configs/Invoice'
 
 const OrderList = () => {
   const [invoice, setInvoice] = useState([]);
   useEffect(() => {
     axios.get(`http://localhost:9090/api/invoices`).then((response) => {
-      setInvoice(response.data);
+      setInvoice(response.data.reverse());
     });
   }, [invoice]);
 
-  //setInvoice(Invoice); //if data not exists
   async function updateStatus(e, id) {
     e.preventDefault();
     console.log(e.target.value);

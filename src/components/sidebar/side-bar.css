@@ -131,6 +131,7 @@
                 --size: 40px;
                 width: var(--size);
                 height: var(--size);
+                /* cmt for right sidebar  */
                 margin-right: 2.2rem;
                 display: flex;
                 align-items: center;

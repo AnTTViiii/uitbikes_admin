@@ -1,14 +1,14 @@
 import React from "react";
 import "./userinfo.css";
 
-const UserInfo = ({ user }) => {
+const UserInfo = ({ admin }) => {
   return (
     <div className="user-info">
       <div className="user-info__img">
-        <img src={user.avatar} alt="" />
+        <img src={admin.avatar} alt="" />
       </div>
       <div className="user-info__name">
-        <span>{user.username}</span>
+        <span>{admin.username}</span>
       </div>
     </div>
   );

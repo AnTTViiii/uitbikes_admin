@@ -1,7 +1,6 @@
 import React from "react";
 import "./tovnav.css";
 import UserInfo from "../user-info/UserInfo";
-import data from "../configs/data";
 import { MenuRounded } from "@mui/icons-material";
 import { useSelector } from "react-redux";
 
@@ -9,10 +8,10 @@ const TopNav = () => {
   const openSideBar = () => {
     document.body.classList.add("sidebar-open");
   };
-  const user = useSelector((state) => state.auth.user);
+  const admin = useSelector((state) => state.auth.admin);
   return (
     <div className="topnav">
-      <UserInfo user={user} />
+      <UserInfo admin={admin} />
       <div className="sidebar-toggle" onClick={openSideBar}>
         <MenuRounded className="icon" />
       </div>

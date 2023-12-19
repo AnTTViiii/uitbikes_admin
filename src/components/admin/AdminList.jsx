@@ -18,7 +18,7 @@ function AdminList() {
   const openViewPopup = () => setViewPopup(true);
   const closeViewPopup = () => setViewPopup(false);
   const [username, setUserName] = useState("");
-  const user = useSelector((state) => state.auth.user);
+  const admin = useSelector((state) => state.auth.admin);
   useEffect(() => {
     axios
       .get("http://localhost:9090/api/accounts/admin")
@@ -64,17 +64,17 @@ function AdminList() {
 
             <td>
               <Button
-                className={item.username === user.username ? "del-btn disabled" : "del-btn"}
+                className={item.username === admin.username ? "del-btn disabled" : "del-btn"}
                 onClick={() => {
                   openViewPopup();
                   setUserName(item.username);
                 }}
                 sx={
-                  item.username === user.username
+                  item.username === admin.username
                     ? { textTransform: "none" }
                     : {}
                 }
-                disabled={item.username === user.username ? true : false}
+                disabled={item.username === admin.username ? true : false}
               >
                 Xóa
               </Button>

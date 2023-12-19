@@ -16,12 +16,12 @@ import BrandUpdate from "./pages/BrandUpdate";
 
 function App() {
   const { isAuthed } = useSelector((state) => state.auth);
-  const user = isAuthed ? JSON.parse(localStorage.getItem('user')) : [];
+  const admin = isAuthed ? JSON.parse(localStorage.getItem('admin')) : [];
 
   return (
     <BrowserRouter>
       <Routes>
-        {isAuthed && user != null ? (
+        {isAuthed && admin != null ? (
           <Route path="/" element={<MainLayout />}>
             <Route index element={<Dashboard />} />
             <Route path="customers" element={<Customers />} />
