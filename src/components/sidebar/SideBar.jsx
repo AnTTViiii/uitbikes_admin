@@ -8,9 +8,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Dialog, DialogTitle, Button, DialogActions } from '@mui/material'
 import { Transition } from '../configs/functions'
 
-// const Transition = React.forwardRef(function Transition(props, ref) {
-//     return <Slide direction="up" ref={ref} {...props} />;
-// });
 const SideBar = () => {
     const navigate = useNavigate();
     const [activeIndex, setActiveIndex] = useState(0);
@@ -51,6 +48,8 @@ const SideBar = () => {
                 <div className="sidebar-close" onClick={closeSideBar}>
                     <ClearRounded className='icon' />
                 </div>
+                {/* Sidebar on the right */}
+                {/* <img src='https://res.cloudinary.com/dpwehcnso/image/upload/v1696926058/uitbikes/admin_logo_byc47w.png' alt='UIT Bikes' /> */}
             </div>
             <div className="sidebar__menu">
                 {
@@ -65,6 +64,10 @@ const SideBar = () => {
                             <div className="sidebar__menu__item__txt">
                                 {nav.text}
                             </div>
+                            {/* sidebar on the right */}
+                            {/* <div className="sidebar__menu__item__icon">
+                                {nav.icon}
+                            </div> */}
                         </Link>
                     ))
                 }
@@ -73,8 +76,12 @@ const SideBar = () => {
                         <LogoutRounded />
                     </div>
                     <div className="sidebar__menu__item__txt">
-                        Logout
+                        Đăng xuất
                     </div>
+                    {/* sidebar on the right */}
+                    {/* <div className="sidebar__menu__item__icon">
+                        <LogoutRounded />
+                    </div> */}
                 </div>
 
                 <Dialog open={openLogoutPopup} TransitionComponent={Transition}

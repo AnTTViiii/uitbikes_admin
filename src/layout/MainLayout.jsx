@@ -5,7 +5,7 @@ import TopNav from '../components/topnav/TopNav'
 import { Outlet } from 'react-router-dom'
 const MainLayout = () => {
   return (
-    <>
+    <div className='main-layout'>
       <SideBar />
       <div className='main'>
         <div className='main__content'>
@@ -13,7 +13,7 @@ const MainLayout = () => {
           <Outlet />
         </div>
       </div>
-    </>
+    </div>
   )
 }
 

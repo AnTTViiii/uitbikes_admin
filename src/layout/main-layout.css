@@ -2,9 +2,15 @@
     padding-left: 240px;
     overflow-x: hidden;
 
+    /* sidebar on the right */
+    /* padding-right: 240px; */
+
     @media screen and (max-width: 1080px) {
         padding-left: 0;
         width: 100vw;
+
+        /* sidebar on the right */
+        /* padding-right: 0; */
     }
 
     .main__content {
@@ -29,4 +35,9 @@
     border-bottom-left-radius: 30px;
     transform: scale(0.8) translateX(50%);
     transition: all 0.5s ease-in-out;
+
+    /* sidebar on the right */
+    /* border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    transform: scale(0.8) translateX(-50%); */
 }

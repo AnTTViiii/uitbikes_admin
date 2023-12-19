@@ -12,7 +12,7 @@ const icons = [
 ]
 const OverallList = () => {
   const [overall, setOverall] = useState([
-    { value: '', title: 'Người dùng' },
+    { value: '', title: 'Khách hàng' },
     { value: '', title: 'Sản phẩm' },
     { value: '', title: 'Đơn hàng' },
     { value: '', title: 'Doanh thu' },

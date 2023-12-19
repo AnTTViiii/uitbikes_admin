@@ -36,7 +36,7 @@ const RevenueList = () => {
                         <div className="revenue-list__item__title">
                             {item.title}
                             <span>
-                                {item.value}%
+                                {Math.round(item.value * 100) / 100}%
                             </span>
                         </div>
                         <div>

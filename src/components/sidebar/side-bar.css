@@ -11,6 +11,9 @@
     top: 0;
     z-index: 100;
 
+    /* sidebar on the right */
+    /* right: 0; */
+
     @media screen and (max-width: 1080px) {
         width: 100vw;
         background-color: #15014b;
@@ -61,15 +64,23 @@
         .sidebar__menu__item {
             display: flex;
             align-items: center;
-            justify-content: flex-start;
             position: relative;
             margin-bottom: 1rem;
-            padding-left: 15%;
+            padding-left: 15%; 
+            justify-content: flex-start;
             transition: color 0.3s ease-in-out;
             cursor: pointer;
 
+            /* sidebar on the right */
+            /* justify-content: flex-end;
+            padding-right: 15%; */
+
             @media screen and (max-width: 1080px) {
                 padding-left: 20px;
+
+                /* sidebar on the right */
+                /* justify-content: flex-end;
+                padding-right: 20px; */
             }
 
             &:hover {
@@ -93,16 +104,27 @@
                     position: absolute;
                     height: 100%;
                     width: 5px;
-                    left: 0;
-                    top: 0;
+                    
                     background-color: #6734ff;
+                    top: 0;
+                    left: 0; 
                     border-top-right-radius: 20px;
                     border-bottom-right-radius: 20px;
 
+                    /* sidebar on the right */
+                    /* right: 0;
+                    border-top-left-radius: 20px;
+                    border-bottom-left-radius: 20px; */
+
                     @media screen and (max-width: 1080px) {
-                        background-color: #FF9066;
+                        background: #FF9066;
                     }
                 }
+            }
+
+            .sidebar__menu__item__txt {
+                /* sidebar on the right */
+                /* margin-right: 2.2rem; */
             }
 
             .sidebar__menu__item__icon {
@@ -137,10 +159,6 @@
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif !important;
     border-radius: 10px !important;
-}
-
-.css-bdhsul-MuiTypography-root-MuiDialogTitle-root {
-
 }
 
 .css-1e6y48t-MuiButtonBase-root-MuiButton-root {

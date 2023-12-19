@@ -94,26 +94,14 @@ const Dashboard = () => {
   return (
     <DashboardWrapper>
       <DashboardWrapperMain>
-        <div className="row">
-          <div className="col-12 col-md-12">
-            <div className="row">
-              {summary.map((item, index) => (
-                <div
-                  key={`summary-${index}`}
-                  className="col-6 col-md-6 col-sm-12 mb"
-                >
-                  <SummaryBox item={item} />
-                </div>
-              ))}
-            </div>
-          </div>
+        <div className="mb summary-box-wrapper">
+          {summary.map((item, index) => (
+              <SummaryBox item={item} />
+          ))}
         </div>
-        <div className="row">
-          <div className="col-12">
-            <div className="box">
-              <RevenueByMonthsChart />
-            </div>
-          </div>
+        
+        <div className="box">
+          <RevenueByMonthsChart />
         </div>
       </DashboardWrapperMain>
       <DashboardWrapperRight>
