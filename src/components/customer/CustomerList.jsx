@@ -43,33 +43,30 @@ function CustomerList() {
           <th>Số dư ví</th>
           <th>Thao tác</th>
         </tr>
-        {data.map(
-          (item) =>
-            item.isAdmin === false && (
-              <tr>
-                <td>{item.customer.id}</td>
-                <td className="img" style={{ textAlign: "-webkit-center" }}>
-                  <Avatar
-                    src={item.avatar}
-                    alt={item.customer.id}
-                    sx={{ width: "3vw", height: "3vw" }}
-                  />
-                </td>
-                <td>{item.username}</td>
-                <td>{item.customer.phone}</td>
-                <td>{dot3digits(item.customer.balance)}</td>
-                <td
-                  onClick={() => {
-                    openViewPopup();
-                    setCustomerInfo(item.customer);
-                    setAvatar(item.avatar);
-                  }}
-                >
-                  <p className="edit-btn">Xem chi tiết</p>
-                </td>
-              </tr>
-            )
-        )}
+        {data && data.map((item) => item.isAdmin === false && (
+          <tr>
+            <td>{item.customer.id}</td>
+            <td className="img" style={{ textAlign: "-webkit-center" }}>
+              <Avatar
+                src={item.avatar}
+                alt={item.customer.id}
+                sx={{ width: "3vw", height: "3vw" }}
+              />
+            </td>
+            <td>{item.username}</td>
+            <td>{item.customer.phone}</td>
+            <td>{dot3digits(item.customer.balance)}</td>
+            <td
+              onClick={() => {
+                openViewPopup();
+                setCustomerInfo(item.customer);
+                setAvatar(item.avatar);
+              }}
+            >
+              <p className="edit-btn">Xem chi tiết</p>
+            </td>
+          </tr>
+        ))}
       </table>
 
       <Dialog
