@@ -24,7 +24,7 @@ const ProductList = () => {
     axios
       .get("http://localhost:9090/api/products/type/" + val)
       .then((response) => {
-        setData(response.data);
+        setData(response.data.reverse());
       })
       .catch((error) => {
         console.log(error);

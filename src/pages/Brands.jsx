@@ -3,9 +3,7 @@ import BrandList from '../components/brand/BrandList'
 
 const Brands = () => {
   return (
-    <div>
-      <BrandList />
-    </div>
+    <BrandList />
   )
 }
 

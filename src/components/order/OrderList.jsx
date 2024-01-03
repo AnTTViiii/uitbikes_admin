@@ -23,7 +23,8 @@ const OrderList = () => {
   useEffect(() => {
     axios.get(`http://localhost:9090/api/invoices`).then((response) => {
       setInvoice(response.data.reverse());
-    });
+    })
+    .catch((err) => {console.log(err)});
   }, [invoice]);
 
   async function updateStatus(e, id) {
@@ -63,7 +64,7 @@ const OrderList = () => {
           <th>Thành tiền</th>
           <th>Trạng thái</th>
         </tr>
-        {invoice.map((item, index) => (
+        {invoice && invoice.map((item, index) => (
           <tr>
             <td>{index + 1}</td>
             <td>{item.id}</td>

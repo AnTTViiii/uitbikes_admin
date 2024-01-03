@@ -30,13 +30,6 @@ const SignIn = () => {
       return setAlertError("Vui lòng điền đầy đủ!");
     }
 
-    //sign in successfully
-    // event.preventDefault();
-    // setError(null);
-    // setShowAlert(false);
-    // const account = [email, password];
-    // dispatch(authActions.setAuth(account));
-
     const admin = { 
       email: email,
       pw: password,

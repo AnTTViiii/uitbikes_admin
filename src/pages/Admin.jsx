@@ -3,9 +3,7 @@ import AdminList from "../components/admin/AdminList";
 
 const Admin = () => {
   return (
-    <div>
-      <AdminList />
-    </div>
+    <AdminList />
   );
 };
 

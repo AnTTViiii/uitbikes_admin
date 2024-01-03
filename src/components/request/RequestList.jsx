@@ -24,9 +24,10 @@ function RequestList() {
   useEffect(() => {
     axios.get(`http://localhost:9090/api/requests`).then((response) => {
       setRequest(response.data.reverse());
-    });
+    })
+    .catch((err) => {console.log(err)});
   }, [request]);
-  //setRequest(request); //if data not exists
+  
   async function updateStatus(e, id) {
     e.preventDefault();
     console.log(e.target.value);
@@ -62,7 +63,7 @@ function RequestList() {
           <th>Số tài khoản</th>
           <th>Trạng thái</th>
         </tr>
-        {request.map((item, index) => (
+        {request && request.map((item, index) => (
           <tr key={index}>
             <td>{item.id}</td>
             <td>

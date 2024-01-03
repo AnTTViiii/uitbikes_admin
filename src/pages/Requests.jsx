@@ -3,9 +3,7 @@ import RequestList from '../components/request/RequestList'
 
 const Requests = () => {
   return (
-    <div>
-      <RequestList/>
-    </div>
+    <RequestList/>
   )
 }
 

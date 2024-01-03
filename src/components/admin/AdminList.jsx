@@ -49,7 +49,7 @@ function AdminList() {
           <th>Số điện thoại</th>
           <th>Thao tác</th>
         </tr>
-        {data.map((item) => (
+        {data && data.map((item) => (
           <tr>
             <td className="img" style={{ textAlign: "-webkit-center" }}>
               <Avatar

@@ -34,13 +34,14 @@ const OverallList = () => {
           { ...overall[2], value: responses[2].data },
           { ...overall[3], value: responses[3].data }
         ]);
-      });
+      })
+      .catch((err) => {console.log(err)});
   }, [overall]);
 
   return (
-    <ul className='overall-list'>
+    <ul className='overall-list mb'>
       {
-        overall.map((item, index) => (
+        overall && overall.map((item, index) => (
           <li className="overall-list__item" key={`overall-${index}`}>
             <div className="overall-list__item__icon">
               {icons[index]}

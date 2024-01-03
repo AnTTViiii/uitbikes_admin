@@ -25,13 +25,14 @@ const RevenueList = () => {
               { ...rates[1], value: responses[1].data/responses[3].data*100 },
               { ...rates[2], value: responses[2].data/responses[3].data*100 }
             ]);
-          });
+          })
+          .catch((err) => {console.log(err)});
     }, [rates]);
     
     return (
-        <ul className='revenue-list'>
+        <ul className='revenue-list mb'>
             {
-                rates.map((item, index) => (
+                rates && rates.map((item, index) => (
                     <li className="revenue-list__item" key={`revenue-${index}`}>
                         <div className="revenue-list__item__title">
                             {item.title}

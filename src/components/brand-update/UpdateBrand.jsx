@@ -52,7 +52,8 @@ const UpdateBrand = () => {
             setLoadSuccess(true);
             setShowAlertSuccess(true);
             document.getElementById('input-file-img').src = res.data.url;
-        });
+        })
+        .catch((err) => {console.log(err)});
     }
 
     const handleUpdate = () => {
@@ -76,7 +77,8 @@ const UpdateBrand = () => {
                 setSuccess(null);
                 setShowAlert(false);
                 setShowAlertSuccess(false);
-            });
+            })
+            .catch((err) => {console.log(err)});
     }
     
     return (

@@ -43,7 +43,7 @@ function CustomerList() {
           <th>Số dư ví</th>
           <th>Thao tác</th>
         </tr>
-        {data.map((item) => (
+        {data && data.map((item) => (
           <tr>
             <td>{item.customer.id}</td>
             <td className="img" style={{ textAlign: "-webkit-center" }}>

@@ -3,9 +3,7 @@ import CustomerList from '../components/customer/CustomerList'
 
 const Customers = () => {
   return (
-    <div>
-      <CustomerList/>
-    </div>
+    <CustomerList/>
   )
 }
 

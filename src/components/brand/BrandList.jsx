@@ -38,7 +38,7 @@ const BrandList = () => {
                     <th>Thao tác</th>
                 </tr>
                 {
-                    data.map((b) => (
+                    data && data.map((b) => (
                         <tr>
                             <td>{b.id}</td>
                             <td className='img'><img src={b.image} alt={b.name} /></td>
@@ -124,6 +124,9 @@ export const CreateBrand = props => {
                 setSuccess(null);
                 setShowAlert(false);
                 setShowAlertSuccess(false);
+            })
+            .catch((error) => {
+                console.log(error);
             });
     }
 

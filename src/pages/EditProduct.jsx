@@ -87,7 +87,7 @@ function EditProduct() {
       };
       const response = await axios(requestConfig);
       if (response?.data?.asset_id) {
-        //Here i am trying to print the output of the response after the video is posted in cloudinary
+        //Here i am trying to print the output of the response after the image is posted in cloudinary
         console.log(response.data.url, "response");
         setImageUrl(response.data.url);
         setLoadImage(true);
