@@ -20,14 +20,14 @@ const DashboardWrapper = () => {
           subtitle: "",
           value: 0,
           percent: 0,
-          unit: "đ",
+          unit: "sản phẩm",
         },
         {
           title: "Hãng xe bán chạy nhất",
           subtitle: "",
           value: 0,
           percent: 0,
-          unit: "đ",
+          unit: "sản phẩm",
         },
     ]);
     
@@ -35,8 +35,7 @@ const DashboardWrapper = () => {
         const endpoints = [
           `http://localhost:9090/api/invoices/bestsell/product`,
           `http://localhost:9090/api/invoices/bestsell/type`,
-          `http://localhost:9090/api/invoices/bestsell/brand`,
-          `http://localhost:9090/api/invoices/revenue`,
+          `http://localhost:9090/api/invoices/bestsell/brand`
         ];
     
         Promise.all(endpoints.map((endpoint) => axios.get(endpoint))).then(
@@ -44,24 +43,21 @@ const DashboardWrapper = () => {
             setSummary([
               {
                 ...summary[0],
-                subtitle: responses[0].data.product.name,
-                value: responses[0].data.quantity,
-                percent:
-                  ((responses[0].data.product.price * responses[0].data.quantity) /
-                    responses[3].data) *
-                  100,
+                subtitle: responses[0].data.name,
+                value: responses[0].data.count,
+                percent: responses[0].data.percent
               },
               {
                 ...summary[1],
-                subtitle: responses[1].data[1],
-                value: responses[1].data[2],
-                percent: (responses[1].data[2] / responses[3].data) * 100,
+                subtitle: responses[1].data.name,
+                value: responses[1].data.count,
+                percent: responses[1].data.percent
               },
               {
                 ...summary[2],
-                subtitle: responses[2].data[1],
-                value: responses[2].data[3],
-                percent: (responses[2].data[3] / responses[3].data) * 100,
+                subtitle: responses[2].data.name,
+                value: responses[2].data.count,
+                percent: responses[2].data.percent
               },
             ]);
           }

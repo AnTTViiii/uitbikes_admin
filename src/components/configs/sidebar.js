@@ -1,4 +1,4 @@
-import { GridViewRounded, Person2Rounded, Inventory2Rounded, LocalShippingRounded, RequestPageRounded, AdminPanelSettingsRounded, CategoryRounded } from "@mui/icons-material"
+import { GridViewRounded, Person2Rounded, Inventory2Rounded, LocalShippingRounded, RequestPageRounded, AdminPanelSettingsRounded, CategoryRounded, ForumRounded, RateReviewRounded } from "@mui/icons-material"
 
 const sidebar = [
     {
@@ -42,6 +42,18 @@ const sidebar = [
         section: 'admin',
         icon: <AdminPanelSettingsRounded />,
         text: 'Quản trị viên'
+    },
+    {
+        link: '/chat',
+        section: 'chat',
+        icon: <ForumRounded />,
+        text: 'Hộp thư'
+    },
+    {
+        link: '/reviews',
+        section: 'reviews',
+        icon: <RateReviewRounded />,
+        text: 'Đánh giá'
     }
 ]
 

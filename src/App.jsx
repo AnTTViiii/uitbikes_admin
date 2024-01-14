@@ -13,6 +13,8 @@ import { useSelector } from "react-redux";
 import NewProduct from "./pages/NewProduct";
 import EditProduct from "./pages/EditProduct";
 import BrandUpdate from "./pages/BrandUpdate";
+import Inbox from "./pages/Inbox";
+import Reviews from "./pages/Reviews";
 
 function App() {
   const { isAuthed } = useSelector((state) => state.auth);
@@ -31,6 +33,8 @@ function App() {
             <Route path="orders" element={<Orders />} />
             <Route path="requests" element={<Requests />} />
             <Route path="admin" element={<Admin />} />
+            <Route path="chat" element={<Inbox />} />
+            <Route path="reviews" element={<Reviews />} />
             <Route path="new-product" element={<NewProduct />} />
             <Route path="edit-product/*" element={<EditProduct />} />
             <Route path="*" element={<Dashboard />} />
