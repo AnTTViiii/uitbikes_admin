@@ -44,6 +44,7 @@
             background-color: white;
             border-bottom: 1px solid silver;
             padding: 10px 15px;
+            cursor: pointer;
 
             &.selected, &:hover {
                 background-color: #dfdfdf;
@@ -87,7 +88,7 @@
     
         .conversation {
             max-height: 80% !important;
-            overflow: hidden;
+            /* overflow: hidden; */
             overflow-y: scroll;
             display: flex;
             flex-direction: column;
